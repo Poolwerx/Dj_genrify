@@ -1,0 +1,235 @@
+/* Убираем отступы и растягиваем body */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+}
+
+/* Контейнер для центрирования контента */
+.main-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Растягиваем на всю ширину */
+    box-sizing: border-box;
+}
+
+/* Навигация */
+nav {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background-color: #111;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Основной контейнер плейлиста */
+.playlist-container {
+    background-color: #161616;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%; /* Увеличиваем ширину контейнера */
+    max-width: 800px; /* Чтобы на больших экранах не растягивалось слишком сильно */
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Заголовок плейлиста */
+.playlist-container h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e50914;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Список треков */
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    align-items: center;
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку в списке */
+}
+
+/* Элементы списка треков */
+.track-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2a2a2a;
+    padding: 10px 15px;
+    border-radius: 10px;
+    width: 80%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
+}
+
+.track-item:hover {
+    background-color: #3a3a3a;
+}
+
+/* Контейнер для жанров */
+.genres-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-left: 20px; /* Отступ между названием трека и жанрами */
+}
+
+/* Жанровые кнопки */
+.genre-badge {
+    background-color: #e50914;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.genre-badge:hover {
+    transform: scale(1.1);
+}
+
+/* Детали трека (изначально скрыты) */
+.track-details {
+    display: none;
+    margin-top: 10px;
+    background-color: #1a1a1a;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: left;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Стили для видимого блока с описанием */
+.track-details.open {
+    display: block;
+    max-height: 1000px;  /* Устанавливаем достаточную высоту для контента */
+    opacity: 1;
+    transition: max-height 0.5s ease-in, opacity 0.5s ease-in;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #111;
+    width: 100%;
+    font-size: 14px;
+    color: #777;
+    position: relative;
+}
+
+/* Стили для выпадающего списка */
+select {
+    width: 150px; /* Сделал поменьше */
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #888; /* Сероватая рамка */
+    border-radius: 4px;
+    background-color: #222; /* Темный фон */
+    color: #fff; /* Белый текст */
+    cursor: pointer;
+    appearance: none; /* Убираем стандартный стиль */
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+}
+
+/* Стили при наведении */
+select:hover {
+    border-color: #bbb;
+}
+
+/* Стили при фокусе */
+select:focus {
+    border-color: #ddd;
+    outline: none;
+}
+
+.filter-container {
+    margin-bottom: 15px; /* Отступ вниз от выбора жанра */
+}
+
+/* Контейнер для жанров */
+.genres-container {
+    display: flex;
+    flex-wrap: wrap; /* Оставляем wrap, если жанров много */
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0; /* Запрещаем сжатие */
+}
+
+/* Жанровые кнопки */
+.genre-badge {
+    background-color: #e50914;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease;
+    white-space: nowrap; /* Запрещает перенос текста */
+    flex-shrink: 0; /* Запрещает изменение размера */
+}
+
+.genre-badge:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .playlist-container {
+        width: 90%;
+    }
+
+    .track-item {
+        width: 100%;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 10px;
+    }
+}
+

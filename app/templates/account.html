@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль | Dj Genrify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">О проекте</a>
+            <a href="/faq">FAQ</a>
+            <a href="{{ url_for('account', username=current_user.username) }}">Мой аккаунт</a>
+            <a href="/logout">Выйти</a>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <h1 class="username">{{ username }}</h1>
+        <form action="{{ url_for('add_playlist') }}" method="get">
+            <button class="add-playlist-btn">Добавить плейлист</button>
+        </form>
+        <h2>Добавленные плейлисты</h2>
+<ul class="playlist-list">
+    {% for playlist in playlists %}
+        <li>
+            <a href="/playlist_{{ playlist.id }}" class="playlist-item">
+                <div class="playlist-info">
+                    <span class="playlist-name">{{ playlist.name }}</span>
+                    <span class="playlist-platform">{{ playlist.from_platform }}</span>
+                </div>
+                <div class="playlist-genres">
+                    {% if playlist.unique_genres|length > 3 %}
+                        {{ playlist.unique_genres[:3] | join(', ') }} +{{ playlist.unique_genres|length - 3 }}
+                    {% else %}
+                        {{ playlist.unique_genres | join(', ') }}
+                    {% endif %}
+                </div>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+    </main>
+
+    <footer>
+        <p class="footer_text">&copy; 2025 by arioka</p>
+    </footer>
+</body>
+</html>

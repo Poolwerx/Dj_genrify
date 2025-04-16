@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить плейлист | Dj Genrify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_playlist.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">О проекте</a>
+            <a href="/faq">FAQ</a>
+            <a href="{{ url_for('account', username=current_user.username) }}">Мой аккаунт</a>
+            <a href="/logout">Выйти</a>
+        </nav>
+    </header>
+
+    <main class="playlist-form-container">
+        <h1>Добавить плейлист</h1>
+        <form class="playlist-form" action="{{ url_for('add_playlist') }}" method="post">
+            <label for="playlist_url">Ссылка на плейлист:</label>
+            <input type="url" id="playlist_url" name="playlist_url" required>
+
+            <div class="checkbox-group">
+                <label class="custom-checkbox">
+                    <input type="radio" name="service" value="ya_music" required>
+                    <span class="checkmark"></span>
+                    Яндекс музыка
+                </label>
+                <label class="custom-checkbox">
+                    <input type="radio" name="service" value="vk_music">
+                    <span class="checkmark"></span>
+                    Вк музыка
+                </label>
+                <label class="custom-checkbox">
+                    <input type="radio" name="service" value="yt_music">
+                    <span class="checkmark"></span>
+                    Ютуб музыка
+                </label>
+            </div>
+
+            <button type="submit" class="submit-btn">Добавить</button>
+        </form>
+    </main>
+
+    <footer>
+        <p class="footer_text">&copy; 2025 by arioka</p>
+    </footer>
+</body>
+</html>

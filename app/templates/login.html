@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Войти - Dj Genrify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">О проекте</a>
+            <a href="/faq">FAQ</a>
+            <a href="/login">Войти</a>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <div class="login-box">
+            <h1>Войти</h1>
+            <div class="flash-messages">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="custom-alert custom-alert-{{ category }}">
+                                {{ message }}
+                                <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Войти</button>
+            </form>
+            <p class="register-link">Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer_text">&copy; 2025 by arioka</p>
+    </footer>
+    <style>
+        .flash-messages {
+            margin-bottom: 20px;
+        }
+
+        .custom-alert {
+            background: crimson;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: left;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .custom-alert-success {
+            background: green;
+        }
+
+        .custom-alert-warning {
+            background: orange;
+        }
+
+        .custom-alert-danger {
+            background: darkred;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>

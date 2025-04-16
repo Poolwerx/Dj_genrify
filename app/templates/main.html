@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dj Genrify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">О проекте</a>
+            <a href="/faq">FAQ</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('account', username=current_user.username) }}">Мой аккаунт</a>
+                <a href="/logout">Выйти</a>
+            {% else %}
+                <a href="/login">Войти</a>
+            {% endif %}
+        </nav>
+    </header>
+    
+
+    <main>
+        <div class="content">
+            <h1>Dj Genrify</h1>
+            <p class="description">Твой идеальный сет — в один клик! Анализ жанров и рекомендации без лишних хлопот.</p>
+            <a class="start-button" href="{% if current_user.is_authenticated %}{{ url_for('account', username=current_user.username) }}{% else %}{{ url_for('login') }}{% endif %}">
+                <button>Начать</button>
+            </a>
+            
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer_text">&copy; 2025 by arioka</p>
+    </footer>
+</body>
+</html>

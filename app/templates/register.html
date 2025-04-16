@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Dj Genrify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <!-- Подключаем только нужные стили Bootstrap (без сброса) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQvQ2Xt0FNW0E6U5FeRP6C385u0Vj2pv0LAeQA6q/8ANNCeXj65yE3cQv" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">О проекте</a>
+            <a href="/faq">FAQ</a>
+            <a href="/login">Войти</a>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <div class="login-box">
+            <h1 class="registration_title">Регистрация</h1>
+
+            <!-- Флеш-сообщения -->
+            <div class="flash-messages">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="custom-alert custom-alert-{{ category }}">
+                                {{ message }}
+                                <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <form action="/register" method="POST">
+                <div class="input-group">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm_password">Повторите пароль</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p class="register-link">Уже есть аккаунт? <a href="/login">Войти</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer_text">&copy; 2025 by arioka</p>
+    </footer>
+
+    <!-- Bootstrap JS (только для закрытия алертов) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Кастомные стили алертов -->
+    <style>
+        .flash-messages {
+            margin-bottom: 20px;
+        }
+
+        .custom-alert {
+            background: crimson;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: left;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .custom-alert-success {
+            background: green;
+        }
+
+        .custom-alert-warning {
+            background: orange;
+        }
+
+        .custom-alert-danger {
+            background: darkred;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</body>
+</html>

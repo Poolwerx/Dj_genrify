@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Плейлист | Dj Genrify</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='test_playlist.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">О проекте</a>
+            <a href="/faq">FAQ</a>
+            <a href="{{ url_for('account', username=current_user.username) }}">Мой аккаунт</a>
+            <a href="/logout">Выйти</a>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <div class="playlist-container">
+            <h1 class="playlist-title">{{ playlist.name }}</h1>
+            <p class="playlist-platform">Платформа: {{ playlist.from_platform }}</p>
+
+            <!-- Фильтр по жанрам -->
+            <div class="filter-container">
+                <label for="genre-filter">Фильтр по жанрам:</label>
+                <select id="genre-filter" onchange="filterTracks()">
+                    <option value="all">Все жанры</option>
+                    {% for genre in playlist.unique_genres %}
+                        <option value="{{ genre }}">{{ genre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="track-list" id="track-list">
+                {% for track in flattened_tracks %}
+                    <div class="track-item" data-genres="{{ track.genres | join(', ') }}" onclick="toggleTrackDetails(this)">
+                        <span>{{ track.title }}</span>
+                        <div class="genres-container">
+                            {% for genre in track.genres %}
+                                <span class="genre-badge">{{ genre }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="track-details">
+                            <p>Исполнитель: {{ track.artists }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            
+            
+        </div>
+    </div>
+
+    <footer>
+        <p class="footer_text">&copy; 2025 by arioka</p>
+    </footer>
+
+    <script>
+        function toggleTrackDetails(element) {
+            let details = element.querySelector('.track-details');
+            details.classList.toggle('open');
+        }
+
+        function filterTracks() {
+            let selectedGenre = document.getElementById('genre-filter').value;
+            let tracks = document.querySelectorAll('.track-item');
+            
+            tracks.forEach(track => {
+                let genres = track.getAttribute('data-genres').split(',');
+                if (selectedGenre === 'all' || genres.includes(selectedGenre)) {
+                    track.style.display = '';
+                } else {
+                    track.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

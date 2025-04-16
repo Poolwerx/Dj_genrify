@@ -1,0 +1,588 @@
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+
+
+/* Хедер */
+header {
+    background: #1e1e1e;
+    padding: 20px 40px;
+    display: flex;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #FF2CDF;
+}
+
+/* Основной контент */
+main {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.content {
+    max-width: 600px;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    background: linear-gradient(45deg, #FF2CDF, #0014FF);
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(183, 27, 139, 0.459);
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    width: 100%; /* Кнопка занимает всю ширину */
+    max-width: 100%; /* Чтобы не выходила за пределы контейнера */
+    text-align: center; /* Выравнивание текста по центру */
+    display: flex; /* Чтобы текст был внутри кнопки, а не просто на одном уровне */
+    justify-content: center; /* Выравнивание по горизонтали */
+    align-items: center; /* Выравнивание по вертикали */
+}
+
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+button:hover::after {
+    opacity: 1;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #0014FF, #FF2CDF);
+    transform: scale(1.05);
+}
+
+
+/* Футер */
+footer {
+    background: #1e1e1e;
+    text-align: center;
+    padding: 15px 0;
+    width: 100%;
+}
+
+.footer_text {
+    color: white;
+    font-weight: 300;
+}
+
+/* Стили для страницы входа */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: #1e1e1e;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(183, 27, 139, 0.459);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.registration_title {
+    font-size: 34px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #2a2a2a;
+    color: white;
+}
+
+.input-group input:focus {
+    outline: none;
+    background: #333;
+}
+
+
+.register-link {
+    margin-top: 15px;
+    font-size: 1rem;
+    text-align: center;
+    color: #bbb;
+}
+
+.register-link a {
+    color: #FF2CDF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.register-link a:hover {
+    color: white;
+    text-shadow: 0 0 10px #FF2CDF;
+}
+
+
+/* Основной контейнер профиля */
+.profile-container {
+    flex-grow: 1;
+    padding: 60px 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Ник пользователя */
+.username {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: white;
+    border-bottom: 2px solid #FF2CDF;
+    padding-bottom: 5px;
+}
+
+/* Кнопка добавления плейлиста */
+.add-playlist-btn {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: none;
+    background: linear-gradient(45deg, #FF2CDF, #0014FF);
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-position 0.5s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(183, 27, 139, 0.459);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.add-playlist-btn:hover {
+    background: linear-gradient(45deg, #0014FF, #FF2CDF);
+    transform: scale(1.05);
+}
+
+/* Заголовок "Добавленные плейлисты" */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* Список плейлистов */
+.playlist-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+/* Стили плейлистов */
+.playlist-list li {
+    background: #2a2a2a;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: left;
+}
+
+.playlist-list li:hover {
+    background: #333;
+    transform: scale(1.02);
+}
+
+/* Ссылки внутри плейлистов */
+.playlist-list li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    transition: color 0.3s;
+    display: block;
+}
+
+.playlist-list li a:hover {
+    color: #FF2CDF;
+}
+
+
+/* Контейнер формы */
+.playlist-form-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.playlist-form {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(183, 27, 139, 0.459);
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: white;
+    text-align: left;
+    width: 100%;
+}
+
+input[type="url"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    background: #2a2a2a;
+    color: white;
+    outline: none;
+    transition: background 0.3s;
+}
+
+input[type="url"]:focus {
+    background: #333;
+}
+
+/* Чекбоксы */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Создание кастомного чекбокса */
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 22px;
+    height: 22px;
+    background: #2a2a2a;
+    border-radius: 5px;
+    transition: 0.3s;
+    border: 2px solid #FF2CDF;
+}
+
+/* При наведении */
+.custom-checkbox:hover .checkmark {
+    background: #333;
+}
+
+/* Если чекбокс отмечен */
+.custom-checkbox input:checked + .checkmark {
+    background: #FF2CDF;
+    border: 2px solid white;
+}
+
+/* Галочка внутри чекбокса */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox input:checked + .checkmark:after {
+    display: block;
+}
+
+/* Стилизация галочки */
+.custom-checkbox .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Кнопка отправки */
+.submit-btn {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: none;
+    background: linear-gradient(45deg, #FF2CDF, #0014FF);
+    color: white;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-position 0.5s ease, transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(183, 27, 139, 0.459);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(45deg, #0014FF, #FF2CDF);
+    transform: scale(1.05);
+}
+
+
+/* Список плейлистов */
+.playlist-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+/* Плейлист-элемент */
+.playlist-list li {
+    background: #1e1e1e;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 12px;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 1.2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.playlist-list li:hover {
+    background: #292929;
+    transform: scale(1.02);
+}
+
+/* Ссылка внутри элемента */
+.playlist-item {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    transition: color 0.3s;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+}
+
+/* Верхняя часть - название и платформа */
+.playlist-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+/* Название плейлиста */
+.playlist-name {
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+/* Платформа (Spotify, Apple и т. д.) */
+.playlist-platform {
+    font-size: 1rem;
+    color: #FF2CDF;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* Жанры */
+.playlist-genres {
+    font-size: 1rem;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.start-button {
+    text-decoration: none;  /* убирает подчёркивание */
+    color: inherit;         /* берёт цвет от родителя — не будет синей */
+}
+
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.faq-item {
+    background: #1e1e1e;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(255, 44, 223, 0.1);
+    transition: background 0.3s ease;
+}
+
+.faq-item:hover {
+    background: #292929;
+}
+
+.faq-question {
+    font-size: 1.6rem;
+    color: #FF2CDF;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.faq-answer {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.faq-paragraph p {
+    font-size: 1.1rem;
+    color: #bbb;
+    line-height: 1.6;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(ellipse at left center, rgba(56, 12, 83, 0.2), transparent 70%),
+                radial-gradient(ellipse at right center, rgba(31, 69, 255, 0.2), transparent 70%);
+    animation: floatSides 15s ease-in-out infinite;
+    background-size: 200% 200%;
+    background-repeat: no-repeat;
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+@keyframes floatSides {
+    0% {
+        background-position: left center, right center;
+    }
+    50% {
+        background-position: left 20% center, right 80% center;
+    }
+    100% {
+        background-position: left center, right center;
+    }
+}
+
+
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .playlist-container {
+        width: 95%;
+    }
+
+    .track-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        align-items: center;
+        gap: 15px;
+    }
+}
