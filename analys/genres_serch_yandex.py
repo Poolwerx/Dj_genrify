@@ -18,8 +18,10 @@ def get_playlist_tracks(link):
         playlist = client.users_playlists(playlist_id, user_id)
         song_artist_dict = dict()
         song_artist_set = set()
-
+        max_tracks = 50
         for i, track in enumerate(playlist.tracks, start=1):
+            if i > max_tracks:
+                break
             track_title = track.track.title
             artists = ', '.join(artist.name for artist in track.track.artists)
             genres = search_pylast_genre(artists, track_title)  # получение жанров

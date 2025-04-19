@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, session
 from flask_login import (LoginManager, UserMixin, login_required, login_user, logout_user, current_user)
-from check_forms import check_register_form, check_login_form, check_form_add_playlist
+from app.check_forms import check_register_form, check_login_form, check_form_add_playlist
 from db.queries import DBquaries  # Теперь просто импортируем уже готовый объект
 from config import DATABASE_URL
 from db.engine import DatabaseEngine

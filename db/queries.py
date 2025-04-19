@@ -1,5 +1,8 @@
 from db.models import define_models
 from db.engine import DatabaseEngine
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from config import DATABASE_URL
 
 
